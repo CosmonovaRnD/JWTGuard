@@ -1,0 +1,24 @@
+{
+    "name": "cosmonova-rnd/jwt-guard",
+    "description": "Guard JWT Authenticator for Symfony",
+    "type": "library",
+    "version": "1.0.0",
+    "require": {
+        "cosmonova-rnd/jwt": "^0.8.0",
+        "symfony/security-bundle": "~3.4|~4.0",
+        "symfony/framework-bundle": "~3.4|~4.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aleksandr Besedin",
+            "email": "bs@cosmonova.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CosmonovaRnD\\JWTGuard\\": "src/"
+        }
+    },
+    "minimum-stability": "alpha"
+}
