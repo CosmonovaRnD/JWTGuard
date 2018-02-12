@@ -22,7 +22,7 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
  * Class JwtAuthenticator
  *
  * @author  Aleksandr Besedin <bs@cosmonova.net>
- * @package CosmonovaRnD\Auth\Security\Authenticator
+ * @package CosmonovaRnD\JWTGuard\Security
  * Cosmonova | Research & Development
  */
 class JwtAuthenticator extends AbstractGuardAuthenticator
@@ -73,6 +73,9 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
      * @param Request $request
      *
      * @return array
+     * @throws AuthenticationCredentialsNotFoundException
+     * @throws CredentialsExpiredException
+     * @throws AuthenticationException
      * @throws NotSupportedAlgorithmException
      */
     public function getCredentials(Request $request): array
@@ -109,6 +112,7 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
      * @param \Symfony\Component\Security\Core\User\UserProviderInterface $userProvider
      *
      * @return UserInterface
+     * @throws \InvalidArgumentException
      */
     public function getUser($credentials, UserProviderInterface $userProvider): UserInterface
     {
