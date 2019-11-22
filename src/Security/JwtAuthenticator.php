@@ -6,6 +6,7 @@ namespace CosmonovaRnD\JWTGuard\Security;
 use CosmonovaRnD\JWT\Exception\NotSupportedAlgorithmException;
 use CosmonovaRnD\JWT\Parser\Parser;
 use CosmonovaRnD\JWT\Verifier\Verifier;
+use DateTimeImmutable;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,7 @@ use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
+use function strpos;
 
 /**
  * Class JwtAuthenticator
@@ -89,7 +91,7 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
             throw new AuthenticationException('JWT token not valid');
         }
 
-        if ($token->expires() < new \DateTimeImmutable()) {
+        if ($token->expires() < new DateTimeImmutable()) {
             throw  new CredentialsExpiredException('JWT expired');
         }
 
@@ -169,7 +171,7 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
     private function prepareRoles(array $roles): array
     {
         foreach ($roles as $k => $role) {
-            if ('ROLE_' !== \substr($role, 0, 5)) {
+            if (strpos($role, 'ROLE_') !== 0) {
                 $roles[$k] = "ROLE_$role";
             }
         }
