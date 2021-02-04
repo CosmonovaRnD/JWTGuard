@@ -2,9 +2,9 @@
     "name": "cosmonova-rnd/jwt-guard",
     "description": "Guard JWT Authenticator for Symfony",
     "type": "library",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "require": {
-        "cosmonova-rnd/jwt": "^0.8.0",
+        "cosmonova-rnd/jwt": "^1.0",
         "symfony/security-bundle": "^5",
         "symfony/framework-bundle": "^5"
     },
